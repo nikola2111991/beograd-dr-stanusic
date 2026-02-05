@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr Ivana Stanušić | Stomatološka ordinacija Beograd</title>
+  <meta name="description" content="Stomatološka ordinacija Dr Ivana Stanušić, Kneza Miloša 51, Beograd. Savršena ocena 5.0 na Google-u od 53 pacijenta. Opšta i dečija stomatologija.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --primary: #1a5276;
+      --primary-light: #2471a3;
+      --accent: #148f77;
+      --accent-light: #1abc9c;
+      --dark: #1c2833;
+      --text: #2c3e50;
+      --text-light: #5d6d7e;
+      --bg: #ffffff;
+      --bg-soft: #f8f9fa;
+      --bg-warm: #fdfcfb;
+      --border: #e8ecef;
+      --shadow: 0 2px 16px rgba(0,0,0,0.06);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,0.08);
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', -apple-system, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', Georgia, serif;
+      color: var(--dark);
+      line-height: 1.25;
+    }
+
+    a { color: var(--primary); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--accent); }
+    img { max-width: 100%; height: auto; display: block; }
+
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+    /* HEADER */
+    .header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.3s;
+    }
+    .header.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
+    .header-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1140px; margin: 0 auto; padding: 0 24px;
+      height: 72px;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem; font-weight: 600; color: var(--primary);
+      white-space: nowrap;
+    }
+    .logo span { color: var(--accent); }
+    .nav { display: flex; align-items: center; gap: 32px; }
+    .nav a {
+      font-size: 0.92rem; font-weight: 500; color: var(--text);
+      transition: color 0.2s; position: relative;
+    }
+    .nav a:hover { color: var(--primary); }
+    .nav a.active { color: var(--primary); }
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--primary); color: #fff !important; padding: 10px 22px;
+      border-radius: 50px; font-size: 0.9rem; font-weight: 600;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav-cta:hover { background: var(--primary-light); color: #fff !important; transform: translateY(-1px); }
+
+    /* HAMBURGER */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; z-index: 200; }
+    .hamburger span { width: 24px; height: 2px; background: var(--dark); transition: 0.3s; border-radius: 2px; }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .mobile-menu {
+      display: none; position: fixed; top: 72px; left: 0; right: 0; bottom: 0;
+      background: #fff; z-index: 99; padding: 32px 24px;
+      flex-direction: column; gap: 8px;
+    }
+    .mobile-menu.active { display: flex; }
+    .mobile-menu a {
+      font-size: 1.1rem; padding: 14px 0; color: var(--text); font-weight: 500;
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-menu .nav-cta {
+      margin-top: 16px; text-align: center; justify-content: center;
+      padding: 16px 24px; font-size: 1rem;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 140px 24px 80px;
+      background: linear-gradient(180deg, #f0f6fa 0%, #fff 100%);
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -60%; right: -20%;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(20,143,119,0.06) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-inner {
+      max-width: 1140px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #fff; border: 1px solid var(--border); padding: 8px 18px;
+      border-radius: 50px; font-size: 0.85rem; font-weight: 600;
+      color: var(--primary); margin-bottom: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .hero-badge .star { color: #f5b041; font-size: 1rem; }
+    .hero h1 {
+      font-size: 2.8rem; margin-bottom: 20px; color: var(--dark);
+      letter-spacing: -0.5px;
+    }
+    .hero p {
+      font-size: 1.1rem; color: var(--text-light); margin-bottom: 32px;
+      max-width: 480px; line-height: 1.75;
+    }
+    .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--primary); color: #fff; padding: 15px 30px;
+      border-radius: 50px; font-size: 0.95rem; font-weight: 600;
+      transition: all 0.2s; border: none; cursor: pointer;
+    }
+    .btn-primary:hover { background: var(--primary-light); color: #fff; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(26,82,118,0.25); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: var(--primary); padding: 15px 30px;
+      border-radius: 50px; font-size: 0.95rem; font-weight: 600;
+      border: 2px solid var(--primary); transition: all 0.2s; cursor: pointer;
+    }
+    .btn-secondary:hover { background: var(--primary); color: #fff; }
+    .hero-image {
+      border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--shadow-lg); position: relative;
+    }
+    .hero-image img {
+      width: 100%; height: 450px; object-fit: cover;
+    }
+
+    /* ZASTO MI */
+    .benefits {
+      padding: 100px 24px; background: var(--bg);
+    }
+    .section-label {
+      font-family: 'DM Sans', sans-serif; font-size: 0.82rem;
+      font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
+      color: var(--accent); margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: 2.2rem; margin-bottom: 16px;
+    }
+    .section-subtitle {
+      font-size: 1.05rem; color: var(--text-light); max-width: 560px;
+      margin-bottom: 56px; line-height: 1.7;
+    }
+    .benefits-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+    }
+    .benefit-card {
+      border-radius: var(--radius); overflow: hidden;
+      background: #fff; border: 1px solid var(--border);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .benefit-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .benefit-card img { width: 100%; height: 200px; object-fit: cover; }
+    .benefit-card-body { padding: 24px; }
+    .benefit-card h3 { font-family: 'DM Sans', sans-serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; color: var(--dark); }
+    .benefit-card p { font-size: 0.92rem; color: var(--text-light); line-height: 1.6; }
+
+    /* PROCES */
+    .process { padding: 100px 24px; background: var(--bg-soft); }
+    .process-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; text-align: center; }
+    .process-step { position: relative; }
+    .step-number {
+      width: 64px; height: 64px; background: var(--primary); color: #fff;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; font-weight: 700; margin: 0 auto 20px;
+      font-family: 'Playfair Display', serif;
+    }
+    .process-step h3 { font-family: 'DM Sans', sans-serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; }
+    .process-step p { font-size: 0.92rem; color: var(--text-light); max-width: 260px; margin: 0 auto; }
+
+    /* BROJEVI */
+    .stats { padding: 80px 24px; background: var(--primary); color: #fff; }
+    .stats-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 32px; text-align: center; }
+    .stat-number { font-family: 'Playfair Display', serif; font-size: 3.2rem; font-weight: 700; margin-bottom: 4px; }
+    .stat-label { font-size: 0.9rem; opacity: 0.85; font-weight: 400; }
+    .stat-number .accent { color: var(--accent-light); }
+
+    /* RECENZIJE */
+    .reviews { padding: 100px 24px; background: var(--bg-warm); }
+    .reviews-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+    .review-card {
+      background: #fff; border-radius: var(--radius); padding: 32px;
+      border: 1px solid var(--border); position: relative;
+      transition: transform 0.3s;
+    }
+    .review-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+    .review-stars { color: #f5b041; font-size: 1rem; margin-bottom: 16px; letter-spacing: 2px; }
+    .review-text { font-size: 0.95rem; color: var(--text); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+    .review-author { font-weight: 600; font-size: 0.9rem; color: var(--dark); }
+    .review-source { font-size: 0.8rem; color: var(--text-light); margin-top: 2px; }
+
+    /* CTA BANNER */
+    .cta-banner { padding: 80px 24px; background: var(--dark); text-align: center; }
+    .cta-banner h2 { color: #fff; font-size: 2rem; margin-bottom: 12px; }
+    .cta-banner p { color: rgba(255,255,255,0.7); font-size: 1.05rem; margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .btn-white {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #fff; color: var(--primary); padding: 16px 34px;
+      border-radius: 50px; font-size: 1rem; font-weight: 600;
+      transition: all 0.2s;
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); color: var(--primary); }
+
+    /* FOOTER */
+    .footer { padding: 40px 24px; background: var(--bg-soft); border-top: 1px solid var(--border); text-align: center; }
+    .footer p { font-size: 0.85rem; color: var(--text-light); }
+    .footer a { color: var(--text-light); }
+    .footer a:hover { color: var(--primary); }
+    .footer .credit { margin-top: 8px; font-size: 0.78rem; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .nav { display: none; }
+      .hamburger { display: flex; }
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero h1 { font-size: 2rem; }
+      .hero p { margin: 0 auto 32px; }
+      .hero-buttons { justify-content: center; }
+      .hero-image { max-width: 500px; margin: 0 auto; }
+      .hero-image img { height: 320px; }
+      .benefits-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr; gap: 48px; }
+      .stats-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .section-subtitle { margin-left: 0; }
+      .section-title { font-size: 1.8rem; }
+      .cta-banner h2 { font-size: 1.6rem; }
+    }
+    @media (max-width: 480px) {
+      .hero { padding: 110px 16px 60px; }
+      .hero h1 { font-size: 1.65rem; }
+      .hero-buttons { flex-direction: column; align-items: center; }
+      .stat-number { font-size: 2.4rem; }
+      .header-inner { padding: 0 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header" id="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">Dr Ivana <span>Stanušić</span></a>
+    <nav class="nav">
+      <a href="index.html" class="active">Početna</a>
+      <a href="usluge.html">Usluge</a>
+      <a href="o-nama.html">O nama</a>
+      <a href="kontakt.html">Kontakt</a>
+      <a href="tel:+381638461898" class="nav-cta">Pozovite nas</a>
+    </nav>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Početna</a>
+    <a href="usluge.html">Usluge</a>
+    <a href="o-nama.html">O nama</a>
+    <a href="kontakt.html">Kontakt</a>
+    <a href="tel:+381638461898" class="nav-cta">Pozovite nas</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="star">&#9733;</span> 5.0 na Google-u &middot; 53 recenzije
+      </div>
+      <h1>Stomatolog kojoj Beograd veruje.</h1>
+      <p>53 pacijenta već zna. Savršena ocena na Google-u to potvrđuje. Zakažite pregled i uverite se sami.</p>
+      <div class="hero-buttons">
+        <a href="tel:+381638461898" class="btn-primary">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Pozovite nas
+        </a>
+        <a href="kontakt.html" class="btn-secondary">Zakažite online</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="photo_04.jpg" alt="Ordinacija Dr Ivana Stanušić, Beograd" loading="eager">
+    </div>
+  </div>
+</section>
+
+<!-- ZASTO MI -->
+<section class="benefits">
+  <div class="container">
+    <div class="section-label">Zašto baš mi</div>
+    <h2 class="section-title">Pacijenti nas biraju ponovo.</h2>
+    <p class="section-subtitle">Ovo nisu obećanja. Ovo su iskustva 53 pacijenta koja možete pročitati na Google-u.</p>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=600&q=80" alt="Pacijent se smeši kod stomatologa" loading="lazy">
+        <div class="benefit-card-body">
+          <h3>Strah od zubara? Ovde ne.</h3>
+          <p>Pacijenti koji su se godinama plašili stomatologa kažu da su kod dr Ivane po prvi put bili opušteni. Svaki korak se objašnjava pre nego što počne.</p>
+        </div>
+      </div>
+      <div class="benefit-card">
+        <img src="photo_06.jpg" alt="Dr Ivana Stanušić sa malim pacijentom" loading="lazy" style="height:200px;object-fit:cover;">
+        <div class="benefit-card-body">
+          <h3>Deca odlaze sa osmehom.</h3>
+          <p>Pristup prilagođen najmlađima. Bez žurbe, bez pritiska. Roditelji kažu da su odušeljeni načinom na koji dr Ivana radi sa decom.</p>
+        </div>
+      </div>
+      <div class="benefit-card">
+        <img src="https://images.unsplash.com/photo-1629909615957-be67e4c0e7a3?auto=format&fit=crop&w=600&q=80" alt="Moderna stomatološka oprema" loading="lazy">
+        <div class="benefit-card-body">
+          <h3>Pažljivo, nežno, bez bola.</h3>
+          <p>Svaka intervencija se radi sa maksimalnom pažnjom. Pacijenti najčešće kažu: nežno, strpljivo, profesionalno.</p>
+        </div>
+      </div>
+      <div class="benefit-card">
+        <img src="https://images.unsplash.com/photo-1606265752439-1f18756aa5fc?auto=format&fit=crop&w=600&q=80" alt="Prijatan ambijent ordinacije" loading="lazy">
+        <div class="benefit-card-body">
+          <h3>Sve vam bude jasno pre početka.</h3>
+          <p>Dr Ivana objašnjava svaki korak. Šta radi, zašto radi, koliko traje. Nema iznenađenja. Nema neprijatnosti.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCES -->
+<section class="process">
+  <div class="container" style="text-align:center;">
+    <div class="section-label">Kako izgleda poseta</div>
+    <h2 class="section-title" style="margin-bottom:56px;">Tri koraka do zdravog osmeha.</h2>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="step-number">1</div>
+        <h3>Pozovite nas</h3>
+        <p>Zakažemo termin koji vama odgovara. Bez dugog čekanja.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">2</div>
+        <h3>Pregled i plan</h3>
+        <p>Dr Ivana pregleda, objasni stanje i napravi jasan plan terapije.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-number">3</div>
+        <h3>Vaš novi osmeh</h3>
+        <p>Odlazite sa rezultatom i osmehom. Kao 53 pacijenta pre vas.</p>
+      </div>
+    </div>
+    <a href="tel:+381638461898" class="btn-primary" style="margin-top:48px;">Zakažite prvi pregled</a>
+  </div>
+</section>
+
+<!-- BROJEVI -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div>
+        <div class="stat-number">5.0</div>
+        <div class="stat-label">prosečna ocena na Google-u</div>
+      </div>
+      <div>
+        <div class="stat-number">53</div>
+        <div class="stat-label">zadovoljna pacijenta</div>
+      </div>
+      <div>
+        <div class="stat-number">100<span class="accent">%</span></div>
+        <div class="stat-label">petice od svakog pacijenta</div>
+      </div>
+      <div>
+        <div class="stat-number">0</div>
+        <div class="stat-label">negativnih recenzija</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECENZIJE -->
+<section class="reviews">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:56px;">
+      <div class="section-label">Šta kažu pacijenti</div>
+      <h2 class="section-title">Prave reči, pravih ljudi.</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">"Predivno iskustvo posebno sa malom decom. Odušeljeni smo i žena i ja. Njenim načinom rada i pristupom sve postaje mnogo lagano."</p>
+        <div class="review-author">Dejan Milanović</div>
+        <div class="review-source">Google recenzija</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">"Oduvek sam se plašila zubara, sve dok nisam otišla kod Ivane. Pomogla mi je da vratim desni u dobro zdravlje i da prevaziđem jedan od svojih strahova."</p>
+        <div class="review-author">Stoja Tešić</div>
+        <div class="review-source">Google recenzija</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">"Doktorka Ivana je veliki profesionalac. Objašnjava šta sve radi i kako to radi. Zaista je lakše ako se plašite zubara. Toplo se preporučuje."</p>
+        <div class="review-author">Jovana Marković</div>
+        <div class="review-source">Google recenzija</div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:40px;">
+      <a href="https://maps.google.com/?cid=16192204879334091894" target="_blank" class="btn-secondary">Pročitajte sve recenzije</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <h2>Zaslužujete stomatologa koji objašnjava.</h2>
+  <p>Zakažite pregled kod dr Ivane. Bez straha, bez neprijatnosti.</p>
+  <a href="tel:+381638461898" class="btn-white">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    Pozovite: 063/846-1898
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>&copy; 2026 Stomatološka ordinacija Dr Ivana Stanušić. Sva prava zadržana.</p>
+  <p class="credit">Sajt napravio <a href="https://nikolajanjic.com" target="_blank">Nikola Janjić</a></p>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('hamburger').classList.toggle('active');
+    document.getElementById('mobileMenu').classList.toggle('active');
+    document.body.style.overflow = document.getElementById('mobileMenu').classList.contains('active') ? 'hidden' : '';
+  }
+  window.addEventListener('scroll', () => {
+    document.getElementById('header').classList.toggle('scrolled', window.scrollY > 10);
+  });
+</script>
+</body>
+</html>
